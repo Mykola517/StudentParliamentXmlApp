@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StudentParliament>
+  <Event FullName="Коваленко Іван Петрович" Faculty="ФКНК" Department="Комп'ютерних наук" Specialty="122 Комп'ютерні науки" EventType="Конференція" TimeFrame="2026-03-10/2026-03-12" Role="Голова парламенту" Course="3" Email="kovalenko@example.ua">
+    <Description>Студентська наукова конференція, відкриття та вітальне слово голови парламенту</Description>
+  </Event>
+  <Event FullName="Шевченко Олена Іванівна" Faculty="Економічний" Department="Фінансів" Specialty="072 Фінанси, банківська справа" EventType="Фестиваль" TimeFrame="2026-04-05/2026-04-06">
+    <Description>День факультету: виступи студентів і ярмарок ініціатив</Description>
+  </Event>
+  <Event FullName="Бондар Максим Олегович" Faculty="ФКНК" Department="Кібербезпеки" Specialty="125 Кібербезпека" EventType="Круглий стіл" TimeFrame="2025-11-12/2025-11-12" Course="2" Email="bondar@example.ua">
+    <Description>Обговорення безпеки персональних даних студентів</Description>
+  </Event>
+  <Event FullName="Мельник Софія Андріївна" Faculty="Юридичний" Department="Цивільного права" Specialty="081 Право" EventType="Благодійна акція" TimeFrame="2025-12-01/2025-12-10" Role="Заступник голови" Course="4" Email="melnyk@example.ua">
+    <Description>Збір теплих речей для захисників</Description>
+  </Event>
+  <Event FullName="Ткаченко Дмитро Сергійович" Faculty="ФКНК" Department="Програмної інженерії" Specialty="121 Інженерія програмного забезпечення" EventType="Хакатон" TimeFrame="2026-03-28/2026-03-29" Course="3">
+    <Description>Студентський хакатон Hack&amp;Learn</Description>
+  </Event>
+  <Event FullName="Гриценко Анастасія Василівна" Faculty="Гуманітарний" Department="Української філології" Specialty="035 Філологія" EventType="Фестиваль" TimeFrame="2026-02-21/2026-02-21" Role="Секретар" Course="2">
+    <Description>Свято рідної мови: читання поезії та творчі майстерні</Description>
+  </Event>
+  <Event FullName="Олійник Богдан Миколайович" Faculty="Економічний" Department="Менеджменту" Specialty="073 Менеджмент" EventType="Спортивний захід" TimeFrame="2026-05-12/2026-05-13" Course="1">
+    <Description>Турнір з волейболу між факультетами</Description>
+  </Event>
+  <Event FullName="Савчук Марія Олексіївна" Faculty="ФКНК" Department="Комп'ютерних наук" Specialty="122 Комп'ютерні науки" EventType="Збори" TimeFrame="2025-12-15/2025-12-15" Role="Голова комісії з науки" Course="4" Email="savchuk@example.ua">
+    <Description>Звіт студентського парламенту за семестр</Description>
+  </Event>
+  <Event FullName="Кравчук Назар Ігорович" Faculty="Юридичний" Department="Кримінального права" Specialty="081 Право" EventType="Вибори" TimeFrame="2025-09-20/2025-09-22">
+    <Description>Вибори до студентського парламенту</Description>
+  </Event>
+  <Event FullName="Попенко Вікторія Романівна" Faculty="Гуманітарний" Department="Англійської філології" Specialty="035 Філологія" EventType="Круглий стіл" TimeFrame="2025-11-26/2025-11-26" Course="3" Email="popenko@example.ua">
+    <Description>Мовна політика в університеті</Description>
+  </Event>
+  <Event FullName="Руденко Артем Валентинович" Faculty="ФКНК" Department="Кібербезпеки" Specialty="125 Кібербезпека" EventType="Хакатон" TimeFrame="2025-10-18/2025-10-19" Role="Відповідальний за ІТ" Course="2">
+    <Description>CyberDay: змагання з кібербезпеки</Description>
+  </Event>
+  <Event FullName="Лисенко Дарина Павлівна" Faculty="Економічний" Department="Фінансів" Specialty="072 Фінанси, банківська справа" EventType="Благодійна акція" TimeFrame="2025-12-01/2025-12-10" Role="Скарбник" Course="4" Email="lysenko@example.ua">
+    <Description>Збір коштів для підтримки студентів</Description>
+  </Event>
+  <Event FullName="Мазур Євген Леонідович" Faculty="ФКНК" Department="Програмної інженерії" Specialty="121 Інженерія програмного забезпечення" EventType="Спортивний захід" TimeFrame="2026-05-14/2026-05-15" Course="1" Email="mazur@example.ua">
+    <Description>Турнір з футзалу</Description>
+  </Event>
+  <Event FullName="Павленко Ірина Степанівна" Faculty="Гуманітарний" Department="Української філології" Specialty="035 Філологія" EventType="Збори" TimeFrame="2026-06-10/2026-06-10">
+    <Description>Підсумки навчального року</Description>
+  </Event>
+  <Event FullName="Дяченко Тарас Вікторович" Faculty="Юридичний" Department="Цивільного права" Specialty="081 Право" EventType="Круглий стіл" TimeFrame="2026-02-18/2026-02-18" Course="2">
+    <Description>Права студентів: зустріч із адміністрацією</Description>
+  </Event>
+  <Event FullName="Захарченко Юлія Анатоліївна" Faculty="ФКНК" Department="Комп'ютерних наук" Specialty="122 Комп'ютерні науки" EventType="Фестиваль" TimeFrame="2026-04-05/2026-04-06" Role="Редактор студентської газети" Course="2" Email="zakharchenko@example.ua">
+    <Description>День факультету: випуск спецномера студентської газети</Description>
+  </Event>
+</StudentParliament>

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentParliamentXmlApp.MainPage"
+             Title="Студентський Парламент (Лаб 2)">
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="Файл">
+            <MenuFlyoutItem Text="Відкрити XML…" Clicked="OnOpenXmlClicked" />
+            <MenuFlyoutItem Text="Обрати XSL…" Clicked="OnOpenXslClicked" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Text="Вихід" Clicked="OnExitClicked" />
+        </MenuBarItem>
+        <MenuBarItem Text="Дії">
+            <MenuFlyoutItem Text="Знайти" Clicked="OnSearchClicked" />
+            <MenuFlyoutItem Text="Трансформувати в HTML" Clicked="OnTransformClicked" />
+            <MenuFlyoutItem Text="Очистити" Clicked="OnClearClicked" />
+        </MenuBarItem>
+        <MenuBarItem Text="Довідка">
+            <MenuFlyoutItem Text="Довідка" Clicked="OnHelpClicked" />
+            <MenuFlyoutItem Text="Про програму" Clicked="OnAboutClicked" />
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
+    <Grid RowDefinitions="*,Auto" Padding="16" RowSpacing="8">
+        <Grid Grid.Row="0" ColumnDefinitions="380,*" ColumnSpacing="16">
+
+            <ScrollView Grid.Column="0">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Файли" FontAttributes="Bold" />
+                    <Label x:Name="FileStatusLabel" Text="Файл не обрано" TextColor="Gray" FontSize="12" />
+                    <Label x:Name="XslStatusLabel" Text="XSL не обрано" TextColor="Gray" FontSize="12" />
+                    <Button Text="Відкрити XML…" Clicked="OnOpenXmlClicked" />
+                    <Button Text="Обрати XSL…" Clicked="OnOpenXslClicked" />
+
+                    <BoxView HeightRequest="1" Color="LightGray" Margin="0,6" />
+
+                    <Label Text="Метод аналізу:" FontAttributes="Bold" />
+                    <VerticalStackLayout>
+                        <RadioButton x:Name="SaxRadio" Content="SAX API" IsChecked="True" />
+                        <RadioButton x:Name="DomRadio" Content="DOM API" />
+                        <RadioButton x:Name="LinqRadio" Content="LINQ to XML" />
+                    </VerticalStackLayout>
+
+                    <Label Text="Параметри пошуку:" FontAttributes="Bold" />
+                    <Entry x:Name="KeywordEntry" Placeholder="Ключове слово (ПІБ, опис)" />
+                    <Picker x:Name="FacultyPicker" Title="Оберіть факультет" />
+                    <Picker x:Name="DepartmentPicker" Title="Оберіть кафедру" />
+                    <Picker x:Name="SpecialtyPicker" Title="Оберіть спеціальність" />
+                    <Picker x:Name="EventTypePicker" Title="Оберіть вид заходу" />
+
+                    <HorizontalStackLayout Spacing="6">
+                        <CheckBox x:Name="PeriodCheck" />
+                        <Label Text="Враховувати період заходу" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <DatePicker x:Name="FromPicker" Format="dd.MM.yyyy" />
+                    <DatePicker x:Name="ToPicker" Format="dd.MM.yyyy" />
+
+                    <Button Text="Знайти" Clicked="OnSearchClicked" BackgroundColor="#2b00ff" TextColor="White" />
+                    <Button Text="Трансформувати в HTML" Clicked="OnTransformClicked" />
+                    <Button Text="Очистити" Clicked="OnClearClicked" BackgroundColor="Red" TextColor="White" />
+                    <Button Text="Довідка" Clicked="OnHelpClicked" />
+                    <Button Text="Про програму" Clicked="OnAboutClicked" />
+                    <Button Text="Вихід" Clicked="OnExitClicked" />
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <Grid Grid.Column="1" RowDefinitions="Auto,Auto,Auto,*,Auto,*" RowSpacing="6">
+                <Label Grid.Row="0" Text="Запит:" FontAttributes="Bold" />
+                <Label Grid.Row="1" x:Name="QueryLabel" FontSize="12" LineBreakMode="WordWrap" />
+                <Label Grid.Row="2" Text="Результати пошуку:" FontAttributes="Bold" Margin="0,6,0,0" />
+                <CollectionView Grid.Row="3" x:Name="ResultsCollectionView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Margin="0,0,0,8" Padding="10" Stroke="LightGray" StrokeShape="RoundRectangle 5">
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="{Binding FullName}" FontAttributes="Bold" FontSize="16" />
+                                    <Label Text="{Binding EventType, StringFormat='Захід: {0}'}" />
+                                    <Label Text="{Binding TimeFrameText, StringFormat='Час: {0}'}" TextColor="Gray" FontSize="12" />
+                                    <Label Text="{Binding Details}" TextColor="Gray" FontSize="12" />
+                                    <Label Text="{Binding Description}" FontAttributes="Italic" />
+                                    <Label Text="{Binding AttributeCount, StringFormat='атрибутів у вузлі: {0}'}" TextColor="Gray" FontSize="11" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label Grid.Row="4" Text="HTML-перегляд (результат XSLT):" FontAttributes="Bold" />
+                <WebView Grid.Row="5" x:Name="HtmlWebView" />
+            </Grid>
+        </Grid>
+
+        <Label Grid.Row="1" x:Name="StatusLabel" Text="Готово до роботи." FontSize="12" />
+    </Grid>
+</ContentPage>
