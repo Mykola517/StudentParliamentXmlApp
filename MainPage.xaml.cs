@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -44,7 +45,6 @@ namespace StudentParliamentXmlApp
         {
             InitializeComponent();
             ResetDates();
-            ClearHtml();
         }
 
         private async void OnOpenXmlClicked(object? sender, EventArgs e)
@@ -70,7 +70,6 @@ namespace StudentParliamentXmlApp
                 EventTypePicker.ItemsSource = attributes["EventType"];
                 ResultsCollectionView.ItemsSource = null;
                 QueryLabel.Text = "";
-                ClearHtml();
 
                 var counts = all.Select(x => x.AttributeCount).Distinct().OrderBy(x => x);
                 FileStatusLabel.Text = $"Файл: {file.FileName}\nЗаписів Event: {all.Count}\nАтрибутів у вузлах: {string.Join(", ", counts)}";
@@ -156,12 +155,13 @@ namespace StudentParliamentXmlApp
                 Directory.CreateDirectory(folder);
                 var outputPath = Path.Combine(folder, "result.html");
 
-                var html = _results != null
-                    ? _transformer.TransformResults(_results, _xslPath, outputPath)
-                    : _transformer.Transform(_xmlPath, _xslPath, outputPath);
+                if (_results != null)
+                    _transformer.TransformResults(_results, _xslPath, outputPath);
+                else
+                    _transformer.Transform(_xmlPath, _xslPath, outputPath);
 
-                HtmlWebView.Source = new HtmlWebViewSource { Html = html };
-                StatusLabel.Text = $"HTML збережено: {outputPath}";
+                Process.Start(new ProcessStartInfo(outputPath) { UseShellExecute = true });
+                StatusLabel.Text = $"HTML збережено і відкрито в браузері: {outputPath}";
             }
             catch (Exception ex)
             {
@@ -182,7 +182,6 @@ namespace StudentParliamentXmlApp
             _results = null;
             ResultsCollectionView.ItemsSource = null;
             QueryLabel.Text = string.Empty;
-            ClearHtml();
             StatusLabel.Text = "Поле виводу та параметри пошуку очищено.";
         }
 
@@ -198,11 +197,10 @@ namespace StudentParliamentXmlApp
         private async void OnHelpClicked(object? sender, EventArgs e)
         {
             await DisplayAlert("Довідка",
-                "1. Відкрийте XML-файл: списки факультетів, кафедр, спеціальностей і видів заходів заповняться значеннями з файла.\n" +
-                "2. Оберіть метод аналізу: SAX, DOM або LINQ to XML.\n" +
-                "3. Задайте параметри (непорожні поля поєднуються через «І», період вмикається прапорцем) і натисніть «Знайти».\n" +
-                "4. «Трансформувати в HTML» застосовує XSL до результату пошуку (або до всього файла, якщо пошуку ще не було).\n" +
-                "5. «Очистити» скидає параметри та результати.",
+                "1.Оберіть XML - файл та метод аналізу(SAX, DOM або LINQ).\n" +
+    "2. Задайте потрібні фільтри і натисніть \"Знайти\".\n" +
+    "3. Щоб зберегти таблицю, оберіть XSL-файл і натисніть \"Трансформувати в HTML\".\n" +
+    "4. Кнопка \"Очистити\" скидає всі поля та результати.",
                 "ОК");
         }
 
@@ -210,7 +208,7 @@ namespace StudentParliamentXmlApp
         {
             await DisplayAlert("Про програму",
                 "Додаток «Студентський парламент»\nЛабораторна робота № 2 (варіант 28)\n\n" +
-                "Розробник: Друкачук Микола Володимирович\nФКНК, спеціальність 122 «Комп'ютерні науки»\nРік: 2026",
+                "Розробник: Друкачук Микола Володимирович",
                 "ОК");
         }
 
@@ -240,10 +238,7 @@ namespace StudentParliamentXmlApp
             FromPicker.Date = new DateTime(2025, 9, 1);
             ToPicker.Date = new DateTime(2026, 6, 30);
         }
-
-        private void ClearHtml()
-        {
-            HtmlWebView.Source = new HtmlWebViewSource { Html = "<html><body></body></html>" };
-        }
     }
 }
+
+
